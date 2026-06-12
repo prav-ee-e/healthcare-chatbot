@@ -69,8 +69,13 @@ function Message({ msg }) {
   )
 }
 
-function Sidebar({ activeChat, chats, onNewChat, onSelectChat, onDeleteChat }) {
+function Sidebar({ activeChat, chats, onNewChat, onSelectChat, onDeleteChat, isOpen, onClose }) {
   return (
+    <>
+      {/* Backdrop — mobile only, tap to close */}
+      {isOpen && (
+        <div className="sidebar-backdrop" onClick={onClose} aria-hidden="true" />
+      )}
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="logo">
@@ -131,6 +136,7 @@ function Sidebar({ activeChat, chats, onNewChat, onSelectChat, onDeleteChat }) {
         </div>
       </div>
     </aside>
+    </>
   )
 }
 
@@ -142,7 +148,9 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [streamingContent, setStreamingContent] = useState('')
   const [error, setError] = useState(null)
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const isMobile = () => window.innerWidth <= 768
+  const closeSidebarOnMobile = () => { if (isMobile()) setSidebarOpen(false) }
 
   const messagesEndRef = useRef(null)
   const textareaRef = useRef(null)
@@ -306,9 +314,11 @@ export default function App() {
       <Sidebar
         activeChat={activeChatId}
         chats={chats}
-        onNewChat={createChat}
-        onSelectChat={(id) => { setActiveChatId(id); setError(null) }}
+        onNewChat={(topic) => { createChat(topic); closeSidebarOnMobile() }}
+        onSelectChat={(id) => { setActiveChatId(id); setError(null); closeSidebarOnMobile() }}
         onDeleteChat={deleteChat}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
 
       <main className="chat-panel">

@@ -25,7 +25,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://healthcare-chatbot-neon.vercel.app", "http://localhost:3000", "http://localhost:5173"],
+    allow_origins=["https://healthcare-chatbot-neon.vercel.app",],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
