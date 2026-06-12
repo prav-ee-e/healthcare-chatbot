@@ -5,7 +5,7 @@ import './App.css'
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 // Use Vite proxy in dev (/api → :8000), or direct URL if proxy not available
-const API_BASE = import.meta.env.VITE_API_URL || '/api'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://mediassist-backend-1egk.onrender.com'
 
 const QUICK_PROMPTS = [
   { icon: '🤒', text: 'I have a fever and headache. What should I do?' },
