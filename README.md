@@ -8,7 +8,7 @@ A full-stack, production-ready AI healthcare chatbot built with **React + Vite**
 
 | Feature | Detail |
 |---|---|
-| 🤖 AI-powered responses | Claude claude-sonnet-4-20250514 with a healthcare-tuned system prompt |
+| 🤖 AI-powered responses | GROK with a healthcare-tuned system prompt |
 | ⚡ Streaming replies | Server-Sent Events (SSE) for real-time token streaming |
 | 💬 Multi-session history | Create, switch between, and delete conversations |
 | 🏥 Health topic shortcuts | One-click topic starters (Symptoms, Medications, Mental Health, etc.) |
